@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{films_item.title}}
+{% endblock %}
+
+{% block content %}
+
+<div class="container">
+
+
+    <div class="bd-example px-4 py-5 my-5">
+        <h4>Краткий обзор</h4>
+        <hr>
+
+        <div class="row mb-2 mt-2">
+
+            <div class="col-md-12">
+
+                <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+
+                    <div class="col-auto d-none d-lg-block ">
+                        {% if films_item.photo %}
+                        <img class="bd-placeholder-img" width="200" height="300"
+                             src="{{ films_item.photo.url }}">
+                        {% else %}
+                        <img class="bd-placeholder-img" width="200" height="300"
+                             src="http://picsum.photos/seed/picsum/200/250" alt="example">
+                        {% endif %}
+                    </div>
+                    <div class="col p-4 d-flex flex-column position-static">
+                        <h4>Описание сюжета</h4>
+                        <p class="card-text mb-auto">{{ films_item.content }}</p>
+
+                        <div class="col d-flex flex-row">
+                            <div class="p-2 text-muted">Режиссер:</div>
+                            <div class="p-2 text-muted">{{ films_item.directed_by }}</div>
+                        </div>
+                        <div class="col d-flex flex-row">
+                            <div class="p-2 text-muted">В главных ролях:</div>
+                            <div class="p-2 text-muted">{{ films_item.starring }}</div>
+                        </div>
+                        <div class="col d-flex flex-row">
+                            <div class="p-2 text-muted">Дата релиза:</div>
+                            <div class="p-2 text-muted">{{ films_item.release_date }}</div>
+                        </div>
+                        <div class="col d-flex flex-row">
+                            <div class="mb-1 p-2 text-muted">Продолжительность:</div>
+                            <div class="mb-1 p-2 text-muted">{{ films_item.running_time }}</div>
+                        </div>
+
+                        <div class="col d-flex flex-row"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+        {% endblock %}
+

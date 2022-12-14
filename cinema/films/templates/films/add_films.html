@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+{{films_item.title}}
+{% endblock %}
+
+{% block promo %}
+<img class="promo-img" src="{% static 'images/cinema-inside.jpg' %}" width="100%" height="600px">
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1>Добавление новости</h1>
+    <form action="{% url 'add_films' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary btn-block">Добавить новость</button>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,104 @@
+{% load films_tags %}
+
+<div class="list-group">
+
+    {% get_list_date as list_date %}
+
+
+    <div class="bd-examplepx-4 py-5 my-5">
+        <nav>
+            <div class="nav nav-tabs mb-3" id="nav-tab" role="tablist">
+
+                <button class="nav-link active" id="nav-home-tab" data-bs-toggle="tab" data-bs-target="#nav-home" type="button"
+                        role="tab" aria-controls="nav-home" aria-selected="true" tabindex="-1">Сегодня
+                </button>
+
+                {% for day in  list_date %}
+                <button class="nav-link" id="nav-{{ day|date:'j' }}-tab" data-bs-toggle="tab" data-bs-target="#nav-{{ day|date:'j' }}"
+                        type="button" role="tab" aria-controls="nav-{{ day|date:'j' }}" aria-selected="false" tabindex="-1">{{ day|date:"j b" }}
+                </button>
+                {% endfor %}
+            </div>
+        </nav>
+        <div class="tab-content" id="nav-tabContent">
+            <div class="tab-pane fade active show" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                <div class="row mb-2 mt-2">
+                    {% for item in films %}
+                    <div class="col-md-6">
+                        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+
+                            <div class="col-auto d-none d-lg-block">
+
+                                <a href="{% url 'view_films' item.pk %}">
+                                    {% if item.photo %}
+                                    <img class="bd-placeholder-img" width="200" height="300"
+                                         src="{{ item.photo.url }}">
+                                    {% else %}
+                                    <img class="bd-placeholder-img" width="200" height="300"
+                                         src="http://picsum.photos/seed/picsum/200/250" alt="example">
+                                    {% endif %}
+                                </a>
+                            </div>
+                            <div class="col p-4 d-flex flex-column position-static">
+                                <strong class="d-inline-block mb-2 text-primary">{{ item.category }}</strong>
+                                <h3 class="mb-0">{{ item.title }}</h3>
+                                <div class="col d-flex flex-row">
+                                    <div class="mb-1 p-4 text-muted">{{ item.running_time }}</div>
+                                    <div class="mb-1 p-4 text-muted">{{ item.age }}+</div>
+                                </div>
+
+                                <div class="col d-flex flex-row"></div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% for day in  list_date %}
+            <div class="tab-pane fade" id="nav-{{ day|date:'j' }}" role="tabpanel" aria-labelledby="nav-{{ day|date:'j' }}-tab">
+                <div class="row mb-2 mt-2">
+                    {% for item in films %}
+                    <div class="col-md-6">
+                        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+
+                            <div class="col-auto d-none d-lg-block">
+
+                                <a href="{% url 'view_films' item.pk %}">
+                                    {% if item.photo %}
+                                    <img class="bd-placeholder-img" width="200" height="300"
+                                         src="{{ item.photo.url }}">
+                                    {% else %}
+                                    <img class="bd-placeholder-img" width="200" height="300"
+                                         src="http://picsum.photos/seed/picsum/200/250" alt="example">
+                                    {% endif %}
+                                </a>
+                            </div>
+                            <div class="col p-4 d-flex flex-column position-static">
+                                <strong class="d-inline-block mb-2 text-primary">{{ item.category }}</strong>
+                                <h3 class="mb-0">{{ item.title }}</h3>
+
+                                <div class="col d-flex flex-row">
+                                    <div class="mb-1 p-4 text-muted">{{ item.running_time }}</div>
+                                    <div class="mb-1 p-4 text-muted">{{ item.age }}+</div>
+                                    <div class="mb-1 p-4 text-muted">{{ item.date_start_view }}</div>
+
+
+
+                                </div>
+
+                                <div class="col d-flex flex-row"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    {% endfor %}
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+
+</div>
+<hr>
+
+</div>
