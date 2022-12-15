@@ -2,19 +2,11 @@ body {
     background-color: #ebfffe;
 }
 .errorlist {
-    color: red;
+    color: blue;
 }
 .navbar {
     background-color: transparent;
-}
-.navbar-nav .nav-link {
-    color: #1DF537;
-}
-.promo-img {
-    background-image: url('../images/cinema-inside.jpg')
-    background-position: center;
-    height: 600px;
-}
+
 .logo {
     background-color: #ccc;
 }
