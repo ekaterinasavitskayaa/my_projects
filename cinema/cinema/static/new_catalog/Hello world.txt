@@ -2,7 +2,7 @@ body {
     background-color: #ebfffe;
 }
 .errorlist {
-    color: red;
+    color: blue;
 }
 .navbar {
     background-color: transparent;
